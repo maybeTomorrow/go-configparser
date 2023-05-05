@@ -31,6 +31,7 @@ var boolMapping = map[string]bool{
 
 // Dict is a simple string->string map.
 type Dict map[string]string
+type Lines []string
 
 // Config represents a Python style configuration file.
 type Config map[string]*Section

@@ -7,6 +7,7 @@ type Section struct {
 	Name    string
 	options Dict
 	lookup  Dict
+	values  Lines
 }
 
 // Add adds new key-value pair to the section.
@@ -16,6 +17,22 @@ func (s *Section) Add(key, value string) error {
 	s.lookup[lookupKey] = key
 
 	return nil
+}
+
+func (s *Section) Put(value string) error {
+	s.values = append(s.values, value)
+	return nil
+}
+
+func (s *Section) Lines() []string {
+	return s.values
+}
+
+func (s *Section) Line() string {
+	if len(s.values) > 0 {
+		return s.values[0]
+	}
+	return ""
 }
 
 // Get returns value of an option with the given key.
@@ -75,5 +92,6 @@ func newSection(name string) *Section {
 		Name:    name,
 		options: make(Dict),
 		lookup:  make(Dict),
+		values:  make(Lines, 0),
 	}
 }

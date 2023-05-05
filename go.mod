@@ -1,4 +1,4 @@
-module github.com/bigkevmcd/go-configparser
+module github.com/maybeTomorrow/go-configparser
 
 go 1.19
 
